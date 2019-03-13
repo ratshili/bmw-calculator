@@ -1,20 +1,81 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="bmw-calculator-container uk-align-center">
+  <div class="calculator-display uk-text-right">
+    <h3 class="uk-lead expression">{{ equation }}</h3>
 
+    <h1 class="answer">{{ answer }}</h1>
+  </div>
+
+  <hr>
+
+  <div class="calculator-controls">
+    <div class="controls-grid uk-text-center uk-grid uk-grid-small">
+      <div class="uk-width-1-4">
+        <div (click)="onControlPressed('CONTROL', 'CLEAR')" class="calculator-control-item main-control">
+          <span>C</span>
+        </div>
+      </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'BRACKECTS')" class="calculator-control-item main-control">
+            <span>()</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'PERCENT')" class="calculator-control-item main-control">
+            <span>&#37;</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'DIVIDER')" class="calculator-control-item main-control">
+            <span>&divide;</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4" *ngFor="let item of [7,8,9]">
+          <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
+            <span>{{ item }}</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'TIMES')" class="calculator-control-item main-control">
+            <span>&times;</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4" *ngFor="let item of [4,5,6]">
+        <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
+          <span>{{ item }}</span>
+        </div>
+    </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'MINUS')" class="calculator-control-item main-control">
+            <span>&minus;</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4" *ngFor="let item of [1,2,3]">
+        <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
+          <span>{{ item }}</span>
+        </div>
+    </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'PLUS')" class="calculator-control-item main-control">
+            <span>&#43;</span>
+          </div>
+      </div>
+
+      <div class="uk-width-1-2">
+          <div (click)="onControlPressed('NUMBER', 0)" class="calculator-control-item">
+            <span>0</span>
+          </div>
+      </div>
+
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'PERIOD')" class="calculator-control-item">
+            <span>&#46;</span>
+          </div>
+      </div>
+      <div class="uk-width-1-4">
+          <div (click)="onControlPressed('CONTROL', 'EQUALS')" class="calculator-control-item equal-control">
+            <span>&#61;</span>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

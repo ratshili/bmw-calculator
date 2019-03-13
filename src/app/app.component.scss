@@ -1,0 +1,61 @@
+@import '../assets/scss/imports';
+
+$control-height: 80px;
+
+.bmw-calculator-container {
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid $global-muted-background;
+    border-radius: 4px;
+    margin-top: 30px;
+    background-color: white;
+    min-height: 650px;
+    position: relative;
+    padding: $global-gutter / 2;
+
+    .calculator-controls {
+        padding: $global-gutter / 2;
+        position: absolute;
+        bottom: 15px;
+        left: 0;
+        right: 0;
+        .calculator-control-item {
+            border-radius: 30px;
+            background: $global-muted-background;
+            height: $control-height;
+            transition: .15s all ease-in-out;
+            &:active { background: rgba($global-color, 0.5); }
+            span {
+                font-size: 35px;
+                font-weight: 700;
+                line-height: $control-height + 10;
+            }
+            &.main-control {
+                background-color: rgba($global-success-background, 0.15);
+                color: $global-success-background;
+                &:active { background: rgba($global-success-background, 0.5); }
+            }
+            &.equal-control {
+                background-color: rgba($global-primary-background, 0.15);
+                color: $global-primary-background
+            }
+        }
+    }
+
+    .controls-grid {
+        &>div {
+            margin-top: $global-gutter / 2;
+            cursor: pointer;
+        }
+    }
+
+    .calculator-display {
+        min-height: 120px;
+        .expression, .answer {
+            margin: 0;
+        }
+        .answer {
+            font-size: 3.5rem;
+        }
+    }
+}
