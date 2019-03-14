@@ -3,7 +3,7 @@
 $control-height: 80px;
 
 .bmw-calculator-container {
-    max-width: 500px;
+    max-width: 400px;
     width: 100%;
     border: 1px solid $global-muted-background;
     border-radius: 4px;
@@ -51,11 +51,21 @@ $control-height: 80px;
 
     .calculator-display {
         min-height: 120px;
+        border: 1px solid rgba($global-color, 0.15);
+        background: $global-muted-background;
+        padding: 10px 15px;
+        border-radius: 4px;
+        position: relative;
         .expression, .answer {
             margin: 0;
         }
         .answer {
             font-size: 3.5rem;
+            color: $global-success-background;
+            position: absolute;
+            bottom: 0;
+            right: 10px;
+            line-height: 55px;
         }
     }
 }

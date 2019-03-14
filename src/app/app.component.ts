@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
       else if(this.equation.charAt(this.equation.length-1) == ')') {
         this.equation += '*' + operatorValue.toString();
       }
-      else { this.equation += operatorValue.toString(); }
+      else { 
+        this.equation += operatorValue.toString();
+      }
     }
     else if(type === 'CONTROL' && this.isMainOPerators(operatorValue)) {
       if(operatorValue === 'DIVIDER') {
@@ -51,7 +53,10 @@ export class AppComponent implements OnInit {
       ) {
         this.equation += '(';
       }
-      else if((!isNaN(this.equation.charAt(this.equation.length-1)) && !this.parenthesesAreBalanced(this.equation)) || (!isNaN(this.equation.charAt(this.equation.length-1)) && !this.parenthesesAreBalanced(this.equation))) {
+      else if(
+        (!isNaN(this.equation.charAt(this.equation.length-1)) && !this.parenthesesAreBalanced(this.equation)) ||
+        (!this.parenthesesAreBalanced(this.equation))
+      ) {
         this.equation += ')';
       }
       else if(!isNaN(this.equation.charAt(this.equation.length-1))) {
@@ -69,36 +74,41 @@ export class AppComponent implements OnInit {
     }
   }
 
-  isMainOPerators(operator) {
-    return operator === 'DIVIDER' || operator === 'TIMES' || operator === 'MINUS' || operator === 'PLUS';
-  }
+isMainOPerators(operator) {
+  return operator === 'DIVIDER' || operator === 'TIMES' || operator === 'MINUS' || operator === 'PLUS';
+}
 
-  clearOperator() {
-    this.equation = '';
-    this.answer = null;
-  }
+clearOperator() {
+  this.equation = '';
+  this.answer = null;
+}
 
-  checkIfOpertorExists(operator) {
-    return this.equation.indexOf(operator) !== -1;
-  }
+delete() {
+  this.equation = this.equation.slice(0, -1);
+  this.answer = this.equation.length === 0 ? null : this.answer;
+}
 
-  avoidDoubleOperators() {
-    return this.equation[this.equation.length -1] === '/' ||
-    this.equation[this.equation.length -1] === '*' ||
-    this.equation[this.equation.length -1] === '-' ||
-    this.equation[this.equation.length -1] === '+' ||
-    this.equation[this.equation.length -1] === '.';
-  }
+checkIfOpertorExists(operator) {
+  return this.equation.indexOf(operator) !== -1;
+}
 
-  checkIfBracketIsOpen() {
-    return this.equation.indexOf('(') !== -1;
-  }
+avoidDoubleOperators() {
+  return  this.equation[this.equation.length -1] === '/' ||
+          this.equation[this.equation.length -1] === '*' ||
+          this.equation[this.equation.length -1] === '-' ||
+          this.equation[this.equation.length -1] === '+' ||
+          this.equation[this.equation.length -1] === '.';
+}
 
-parenthesesAreBalanced(s){
-  let parentheses = "()", stack = [], i, c;
+checkIfBracketIsOpen() {
+  return this.equation.indexOf('(') !== -1;
+}
 
-  for (i = 0; c = s[i++];) {
-      var bracePosition = parentheses.indexOf(c),
+parenthesesAreBalanced(string){
+  let parentheses = '()', stack = [], i, c;
+
+  for (i = 0; c = string[i++];) {
+      let bracePosition = parentheses.indexOf(c),
       braceType;
       if (!~bracePosition)
       continue;
@@ -106,15 +116,14 @@ parenthesesAreBalanced(s){
       braceType = bracePosition % 2 ? 'closed' : 'open';
 
       if (braceType === 'closed') {
-      if (!stack.length || parentheses.indexOf(stack.pop()) != bracePosition - 1)
-          return false;
+        if (!stack.length || parentheses.indexOf(stack.pop()) != bracePosition - 1)
+            return false;
       }
       else {
-       stack.push(c);
+        stack.push(c);
       }
-  }
-
-  return !stack.length;
+    }
+    return !stack.length;
   }
 
   

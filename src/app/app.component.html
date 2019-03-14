@@ -1,11 +1,10 @@
 <div class="bmw-calculator-container uk-align-center">
   <div class="calculator-display uk-text-right">
     <h3 class="uk-lead expression">{{ equation }}</h3>
-
     <h1 class="answer">{{ answer }}</h1>
   </div>
 
-  <hr>
+  <!-- <hr> -->
 
   <div class="calculator-controls">
     <div class="controls-grid uk-text-center uk-grid uk-grid-small">
@@ -15,29 +14,29 @@
         </div>
       </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'BRACKECTS')" class="calculator-control-item main-control">
-            <span>()</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'BRACKECTS')" class="calculator-control-item main-control">
+          <span>()</span>
+        </div>
       </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'PERCENT')" class="calculator-control-item main-control">
-            <span>&#37;</span>
-          </div>
+        <div (click)="delete()" class="calculator-control-item main-control">
+          <span>del</span>
+        </div>
       </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'DIVIDER')" class="calculator-control-item main-control">
-            <span>&divide;</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'DIVIDER')" class="calculator-control-item main-control">
+          <span>&divide;</span>
+        </div>
       </div>
       <div class="uk-width-1-4" *ngFor="let item of [7,8,9]">
-          <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
-            <span>{{ item }}</span>
-          </div>
+        <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
+          <span>{{ item }}</span>
+        </div>
       </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'TIMES')" class="calculator-control-item main-control">
-            <span>&times;</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'TIMES')" class="calculator-control-item main-control">
+          <span>&times;</span>
+        </div>
       </div>
       <div class="uk-width-1-4" *ngFor="let item of [4,5,6]">
         <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
@@ -45,9 +44,9 @@
         </div>
     </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'MINUS')" class="calculator-control-item main-control">
-            <span>&minus;</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'MINUS')" class="calculator-control-item main-control">
+          <span>&minus;</span>
+        </div>
       </div>
       <div class="uk-width-1-4" *ngFor="let item of [1,2,3]">
         <div (click)="onControlPressed('NUMBER', item)" class="calculator-control-item">
@@ -55,26 +54,26 @@
         </div>
     </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'PLUS')" class="calculator-control-item main-control">
-            <span>&#43;</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'PLUS')" class="calculator-control-item main-control">
+          <span>&#43;</span>
+        </div>
       </div>
 
       <div class="uk-width-1-2">
-          <div (click)="onControlPressed('NUMBER', 0)" class="calculator-control-item">
-            <span>0</span>
-          </div>
+        <div (click)="onControlPressed('NUMBER', 0)" class="calculator-control-item">
+          <span>0</span>
+        </div>
       </div>
 
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'PERIOD')" class="calculator-control-item">
-            <span>&#46;</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'PERIOD')" class="calculator-control-item">
+          <span>&#46;</span>
+        </div>
       </div>
       <div class="uk-width-1-4">
-          <div (click)="onControlPressed('CONTROL', 'EQUALS')" class="calculator-control-item equal-control">
-            <span>&#61;</span>
-          </div>
+        <div (click)="onControlPressed('CONTROL', 'EQUALS')" class="calculator-control-item equal-control">
+          <span>&#61;</span>
+        </div>
       </div>
     </div>
   </div>
