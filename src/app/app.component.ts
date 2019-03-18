@@ -46,7 +46,6 @@ export class AppComponent implements OnInit {
       }
     }
     else if(type === 'CONTROL' && !this.isMainOPerators(operatorValue) && operatorValue === 'BRACKECTS') {
-
       if(
         !this.checkIfBracketIsOpen() && !this.parenthesesAreBalanced(this.equation) || this.equation === '' ||
         (isNaN(this.equation.charAt(this.equation.length-1)))
@@ -59,7 +58,7 @@ export class AppComponent implements OnInit {
       ) {
         this.equation += ')';
       }
-      else if(!isNaN(this.equation.charAt(this.equation.length-1))) {
+      else if(!isNaN(this.equation.charAt(this.equation.length-1)) || (this.equation[this.equation.length - 1] === ')')) {
         this.equation += '*(';
       }
     }
@@ -130,7 +129,8 @@ parenthesesAreBalanced(string){
   calculate() {
     this.answer = null;
     if(this.equation !== '') {
-      this.answer = eval(this.equation);
+      let ans = eval(this.equation);
+      this.answer = Number.isInteger(ans) ? ans : Number(ans).toFixed(9);
       this.equation = this.answer.toString();
     }
   }
